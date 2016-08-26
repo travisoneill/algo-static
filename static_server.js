@@ -13,6 +13,11 @@ Server.use(BodyParser.urlencoded({
   limit: 1024 * 1024 * 10
 }));
 
+Server.get('/test', function(req, res){
+  console.log("Hello.  Node Server is running");
+  res.send("Hello.  Node Server is running");
+});
+
 // Server.use(BodyParser.json({
 //   extended: false,
 //   parameterLimit: 10000,

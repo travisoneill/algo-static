@@ -23,3 +23,5 @@ venv/
 /log/*
 !/log/.keep
 /tmp
+__pycache__
+*.pyc
