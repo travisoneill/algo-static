@@ -51,7 +51,8 @@ const ControlPanel = React.createClass({
   //inputs sort function from library into the selected editor
   demoSort(evt){
     const pane = document.getElementById(`editor-${this.state.selected}`);
-    const text = Library[evt.target.id]();
+    const language = ace.edit(pane).getSession().getMode().$id.match(/\w*$/)[0];
+    const text = Library[evt.target.id](language);
     ace.edit(pane).getSession().setValue(text);
   },
 
@@ -104,17 +105,7 @@ const ControlPanel = React.createClass({
     const el2 = document.getElementById('editor-2');
     const data1 = this.parseEditor(el1);
     const data2 = this.parseEditor(el2);
-    // const language1 = ace.edit(el1).getSession().getMode().$id.match(/\w*$/)[0];
-    // const language2 = ace.edit(el2).getSession().getMode().$id.match(/\w*$/)[0];
-    // const value1 = ace.edit(el1).getSession().getValue();
-    // const value2 = ace.edit(el2).getSession().getValue();
     const lengthArr = this.makeArr();
-    //parses out declared function name
-    // const name1 = value1.match(/function(.*)\(/)[1].trim();
-    // const name2 = value2.match(/function(.*)\(/)[1].trim();
-    // const method1 = `var ${name1} = ${value1}`;
-    // const method2 = `var ${name2} = ${value2}`;
-
     //assembles JSON to be sent to back end
     const data = { data1: data1, data2: data2, lengthArr: lengthArr };
     console.log(data);
