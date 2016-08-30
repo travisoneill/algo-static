@@ -29,12 +29,15 @@ Server.get('/', function(req, res){
 });
 
 // FOR LIVE SERVER
-// Server.listen(process.env.PORT, function(){
-//   console.log('Server Running');
-// });
+if (module === require.main) {
+  const server = Server.listen(process.env.PORT || 8003, function () {
+    const port = server.address().port;
+    console.log('Static Server listening on port %s', port);
+  });
+}
 
 
 // FOR DEV SERVER
-Server.listen(8003, function(){
-  console.log('Server Running');
-});
+// Server.listen(8003, function(){
+//   console.log('Server Running');
+// });
