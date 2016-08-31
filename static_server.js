@@ -25,13 +25,16 @@ Server.get('/test', function(req, res){
 // }));
 
 Server.get('/', function(req, res){
-  res.sendFile(Path.join(__dirname + '/index.html'));
+  res.send("Static Server root is running");
 });
+// Server.get('/', function(req, res){
+//   res.sendFile(Path.join(__dirname + '/index.html'));
+// });
 
 // FOR LIVE SERVER
 if (module === require.main) {
-  const server = Server.listen(process.env.PORT || 8003, function () {
-    const port = server.address().port;
+  var server = Server.listen(process.env.PORT || 8003, function () {
+    var port = server.address().port;
     console.log('Static Server listening on port %s', port);
   });
 }
@@ -41,3 +44,4 @@ if (module === require.main) {
 // Server.listen(8003, function(){
 //   console.log('Server Running');
 // });
+module.exports = server;
