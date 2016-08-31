@@ -10,7 +10,7 @@
     "bundle": "webpack --config webpack.config.js",
     "prestart": "npm run bundle",
     "start": "node node_server.js",
-    "deploy": "gcloud app deploy --project"
+    "deploy": "gcloud app deploy --project "
   },
   "repository": {
     "type": "git",
